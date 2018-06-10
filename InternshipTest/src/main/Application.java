@@ -19,7 +19,8 @@ public class Application {
         System.out.println(internship.getStudents().isEmpty() ? "internship is Empty!" : internship.getStudents());
 
         StudentsService studentsService = new StudentsService();
-        studentsService.addStudentToInternship(university, new Student("Student1", new Knowledge(3)), internship);
+        studentsService.addStudentToInternship(university,
+                new Student("Student1", new Knowledge(3)), internship);
         System.out.println(internship.getStudents().isEmpty() ? "internship is Empty!" : internship.getStudents());
 
         studentsService.addStudentsFromUniversityToInternship(university, internship);
