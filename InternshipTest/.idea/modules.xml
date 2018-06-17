@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/InternshipTest.iml" filepath="$PROJECT_DIR$/.idea/InternshipTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IntershipTest.iml" filepath="$PROJECT_DIR$/.idea/modules/IntershipTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IntershipTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/IntershipTest_main.iml" group="IntershipTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IntershipTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/IntershipTest_test.iml" group="IntershipTest" />
     </modules>
   </component>
 </project>

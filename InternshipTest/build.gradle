@@ -1,0 +1,14 @@
+group 'InterLink'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.1.0'
+}
