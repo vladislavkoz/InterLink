@@ -1,19 +1,13 @@
 package institution;
 
 import person.Student;
+import person.consciousness.Knowledge;
 
-public abstract class KnowledgeSource {
+public interface  KnowledgeSource {
 
-    private double levelOfPractice;
-    private double levelOfTheory;
+     Knowledge getKnowledge(Student student);
 
-    public void giveKnowledge(Student student){
-        student.getKnowledge().setPracticeSkills(student.getTrainingFactor() * levelOfPractice);
-        student.getKnowledge().setTheorySkills(student.getTrainingFactor() * levelOfTheory);
-    }
+     void takeKnowledge(KnowledgeSource knowledgeSource);
 
-    public void takeKnowledge(Student student){
-        //todo implement me
-    }
 
 }

@@ -1,25 +1,37 @@
 package institution;
 
 import person.Student;
+import person.consciousness.Knowledge;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class University extends KnowledgeSource {
-
+public class University implements KnowledgeSource {
 
     private String name;
     private List<Student> universityStudents;
-    private double levelOfPractice;
-    private double levelOfTheory;
+    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
+    private Period period;
 
-    public University(String name, List<Student> universityStudents, double levelOfPractice, double levelOfTheory) {
+
+    public University(String name, List<Student> universityStudents, Knowledge knowledgePortion, Period period) {
         this.name = name;
         this.universityStudents = universityStudents;
-        this.levelOfPractice = levelOfPractice;
-        this.levelOfTheory = levelOfTheory;
+        this.period = period;
     }
+
+    @Override
+    public Knowledge  getKnowledge(Student student) {
+        if (universityStudents.contains(student)){
+            return knowledgePortion;
+        }
+        return null;
+    }
+
+    @Override
+    public void takeKnowledge(KnowledgeSource knowledgeSource) {
+        //todo
+    }
+
 
     public void setStudents(List<Student> students) {
         this.universityStudents = students;
@@ -53,20 +65,13 @@ public class University extends KnowledgeSource {
         this.universityStudents = universityStudents;
     }
 
-    public double getLevelOfPractice() {
-        return levelOfPractice;
+
+    public Period getPeriod() {
+        return period;
     }
 
-    public void setLevelOfPractice(double levelOfPractice) {
-        this.levelOfPractice = levelOfPractice;
-    }
-
-    public double getLevelOfTheory() {
-        return levelOfTheory;
-    }
-
-    public void setLevelOfTheory(double levelOfTheory) {
-        this.levelOfTheory = levelOfTheory;
+    public void setPeriod(Period period) {
+        this.period = period;
     }
 
     //    public int getAverageScore(){

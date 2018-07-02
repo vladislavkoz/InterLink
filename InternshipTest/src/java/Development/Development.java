@@ -1,5 +1,5 @@
 package Development;
 
-public interface DevelopmenEntity {
+public interface Development {
 
 }

@@ -1,12 +1,5 @@
 package main;
 
-import com.zaxxer.hikari.HikariDataSource;
-import institution.SelfStudy;
-import institution.University;
-import institution.interlink.Internship;
-import person.Student;
-import person.consciousness.Knowledge;
-
 import java.sql.SQLException;
 
 public class Application {

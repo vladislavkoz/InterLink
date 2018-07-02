@@ -1,18 +1,31 @@
-package institution.interlink;
+package institution;
 
-import institution.KnowledgeSource;
 import person.Student;
+import person.consciousness.Knowledge;
 
-public class InterlinkMeetup extends KnowledgeSource {
+public class Meetup implements KnowledgeSource {
     private String topic;
-    private double levelOfPractice;
-    private double levelOfTheory;
+    private boolean isInteractiveConsists;
+    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.MIDDLE.getLevel(),0);
 
+    public Meetup(String topic) {
+        this.topic = topic;
+    }
 
     @Override
-    public void giveKnowledge(Student student) {
-        student.getKnowledge().setPracticeSkills(student.getTrainingFactor() * levelOfPractice);
-        student.getKnowledge().setTheorySkills(student.getTrainingFactor() * levelOfTheory);
+    public Knowledge getKnowledge(Student student) {
+        if (isInteractiveConsists){
+            knowledgePortion.setTheorySkills(SkillsLevels.HIGHT.getLevel());
+        }
+        if (student.isLaptopeConsist()) {
+            knowledgePortion.setPracticeSkills(SkillsLevels.MIDDLE.getLevel());
+        }
+        return knowledgePortion;
+    }
+
+    @Override
+    public void takeKnowledge(KnowledgeSource knowledgeSource) {
+        //todo
     }
 
     public String getTopic() {
@@ -21,21 +34,5 @@ public class InterlinkMeetup extends KnowledgeSource {
 
     public void setTopic(String topic) {
         this.topic = topic;
-    }
-
-    public double getLevelOfPractice() {
-        return levelOfPractice;
-    }
-
-    public void setLevelOfPractice(double levelOfPractice) {
-        this.levelOfPractice = levelOfPractice;
-    }
-
-    public double getLevelOfTheory() {
-        return levelOfTheory;
-    }
-
-    public void setLevelOfTheory(double levelOfTheory) {
-        this.levelOfTheory = levelOfTheory;
     }
 }

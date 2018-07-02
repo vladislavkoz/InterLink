@@ -10,6 +10,9 @@ public class Knowledge {
         this.theorySkills = theorySkills;
     }
 
+    public Knowledge() {
+    }
+
     public double getPracticeSkills() {
         return practiceSkills;
     }

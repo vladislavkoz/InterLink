@@ -1,7 +1,7 @@
 package main;
 
 import institution.University;
-import institution.interlink.Internship;
+import institution.Internship;
 import person.Student;
 
 public class StudentsService {

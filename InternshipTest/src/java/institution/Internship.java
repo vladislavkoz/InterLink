@@ -1,24 +1,34 @@
-package institution.interlink;
+package institution;
 
 import institution.KnowledgeSource;
 import person.Student;
+import person.consciousness.Knowledge;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Internship extends KnowledgeSource {
+public class Internship implements KnowledgeSource {
     private String name;
     private List<Student> internshipStudents;
-    private double levelOfPractice;
-    private double levelOfTheory;
+    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
 
-    public Internship(String name, List<Student> internshipStudents, double levelOfPractice, double levelOfTheory) {
+    public Internship(String name, List<Student> internshipStudents) {
         this.name = name;
         this.internshipStudents = internshipStudents;
-        this.levelOfPractice = levelOfPractice;
-        this.levelOfTheory = levelOfTheory;
     }
 
+    @Override
+    public Knowledge getKnowledge(Student student) {
+        if (internshipStudents.contains(student)) {
+            return knowledgePortion;
+        }
+        return new Knowledge(0,0);
+    }
+
+    @Override
+    public void takeKnowledge(KnowledgeSource knowledgeSource) {
+        //todo
+    }
 
     public String getName() {
         return name;
@@ -36,21 +46,6 @@ public class Internship extends KnowledgeSource {
         this.internshipStudents = internshipStudents;
     }
 
-    public double getLevelOfPractice() {
-        return levelOfPractice;
-    }
-
-    public void setLevelOfPractice(double levelOfPractice) {
-        this.levelOfPractice = levelOfPractice;
-    }
-
-    public double getLevelOfTheory() {
-        return levelOfTheory;
-    }
-
-    public void setLevelOfTheory(double levelOfTheory) {
-        this.levelOfTheory = levelOfTheory;
-    }
 
     public Internship(String name) {
         this.name = name;
