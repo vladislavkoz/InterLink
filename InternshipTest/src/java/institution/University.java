@@ -6,13 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class University {
+public class University extends KnowledgeSource {
+
+
     private String name;
     private List<Student> universityStudents;
+    private double levelOfPractice;
+    private double levelOfTheory;
 
-    public University(String name) {
+    public University(String name, List<Student> universityStudents, double levelOfPractice, double levelOfTheory) {
         this.name = name;
-        this.universityStudents = new ArrayList<Student>();
+        this.universityStudents = universityStudents;
+        this.levelOfPractice = levelOfPractice;
+        this.levelOfTheory = levelOfTheory;
     }
 
     public void setStudents(List<Student> students) {
@@ -31,10 +37,42 @@ public class University {
         return universityStudents;
     }
 
-    public int getAverageScore(){
-        Optional<Integer> averageScore = universityStudents.stream()
-                .map(student -> student.getKnowledge().getLevel())
-                .reduce((level1, level2)-> level1 + level2);
-        return averageScore.map(integer -> integer / universityStudents.size()).orElse(0);
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Student> getUniversityStudents() {
+        return universityStudents;
+    }
+
+    public void setUniversityStudents(List<Student> universityStudents) {
+        this.universityStudents = universityStudents;
+    }
+
+    public double getLevelOfPractice() {
+        return levelOfPractice;
+    }
+
+    public void setLevelOfPractice(double levelOfPractice) {
+        this.levelOfPractice = levelOfPractice;
+    }
+
+    public double getLevelOfTheory() {
+        return levelOfTheory;
+    }
+
+    public void setLevelOfTheory(double levelOfTheory) {
+        this.levelOfTheory = levelOfTheory;
+    }
+
+    //    public int getAverageScore(){
+//        Optional<Integer> averageScore = universityStudents.stream()
+//                .map(student -> student.getKnowledge().getLevel())
+//                .reduce((level1, level2)-> level1 + level2);
+//        return averageScore.map(integer -> integer / universityStudents.size()).orElse(0);
+//    }
 }

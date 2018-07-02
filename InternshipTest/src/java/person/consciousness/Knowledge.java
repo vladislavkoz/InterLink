@@ -1,24 +1,36 @@
 package person.consciousness;
 
 public class Knowledge {
-    private int level;
 
-    public Knowledge(int level) {
-        this.level = level;
+    private double practiceSkills;
+    private double theorySkills;
+
+    public Knowledge(double practiceSkills, double theorySkills) {
+        this.practiceSkills = practiceSkills;
+        this.theorySkills = theorySkills;
     }
 
-    public int getLevel() {
-        return level;
+    public double getPracticeSkills() {
+        return practiceSkills;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setPracticeSkills(double practiceSkills) {
+        this.practiceSkills = practiceSkills;
+    }
+
+    public double getTheorySkills() {
+        return theorySkills;
+    }
+
+    public void setTheorySkills(double theorySkills) {
+        this.theorySkills = theorySkills;
     }
 
     @Override
     public String toString() {
         return "Knowledge{" +
-                "level=" + level +
+                "practiceSkills=" + practiceSkills +
+                ", theorySkills=" + theorySkills +
                 '}';
     }
 }
