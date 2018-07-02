@@ -17,18 +17,14 @@ public class Internship implements KnowledgeSource {
         this.internshipStudents = internshipStudents;
     }
 
-    @Override
-    public Knowledge getKnowledge(Student student) {
-        if (internshipStudents.contains(student)) {
-            return knowledgePortion;
-        }
-        return new Knowledge(0,0);
-    }
 
     @Override
-    public void takeKnowledge(KnowledgeSource knowledgeSource) {
-        //todo
+    public void takeKnowledge(Student student) {
+        if (internshipStudents.contains(student)) {
+            student.getKnowledge(knowledgePortion);
+        }
     }
+
 
     public String getName() {
         return name;

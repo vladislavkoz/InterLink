@@ -5,9 +5,7 @@ import person.consciousness.Knowledge;
 
 public interface  KnowledgeSource {
 
-     Knowledge getKnowledge(Student student);
-
-     void takeKnowledge(KnowledgeSource knowledgeSource);
+     void takeKnowledge(Student student);
 
 
 }

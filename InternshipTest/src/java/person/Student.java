@@ -14,10 +14,12 @@ public class Student implements KnowledgeSource {
     public Student() {
     }
 
-    public Student(String name, Knowledge knowledge, double trainingFactor) {
+    public Student(String name, Knowledge knowledge, double trainingFactor, boolean isLaptopeConsist, double teachingFactor) {
         this.name = name;
         this.knowledge = knowledge;
         this.trainingFactor = trainingFactor;
+        this.isLaptopeConsist = isLaptopeConsist;
+        this.teachingFactor = teachingFactor;
     }
 
     public String getName() {
@@ -53,16 +55,16 @@ public class Student implements KnowledgeSource {
     }
 
     @Override
-    public Knowledge getKnowledge(Student student) {
+    public void takeKnowledge(Student student) {
         Knowledge knowledgePortion = new Knowledge();
         knowledgePortion.setTheorySkills(this.knowledge.getTheorySkills() * teachingFactor);
         knowledgePortion.setPracticeSkills(this.knowledge.getPracticeSkills() * teachingFactor);
-        return knowledge;
+        student.getKnowledge(knowledgePortion);
+
     }
 
-    @Override
-    public void takeKnowledge(KnowledgeSource knowledgeSource) {
-        Knowledge newKnowledge = knowledgeSource.getKnowledge(this);
+
+    public void getKnowledge(Knowledge newKnowledge) {
         this.knowledge.setPracticeSkills(this.knowledge.getPracticeSkills() + newKnowledge.getPracticeSkills() * trainingFactor);
         this.knowledge.setTheorySkills(this.knowledge.getTheorySkills() + newKnowledge.getTheorySkills() * trainingFactor);
     }

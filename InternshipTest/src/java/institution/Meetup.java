@@ -13,20 +13,17 @@ public class Meetup implements KnowledgeSource {
     }
 
     @Override
-    public Knowledge getKnowledge(Student student) {
+    public void takeKnowledge(Student student) {
         if (isInteractiveConsists){
             knowledgePortion.setTheorySkills(SkillsLevels.HIGHT.getLevel());
         }
         if (student.isLaptopeConsist()) {
             knowledgePortion.setPracticeSkills(SkillsLevels.MIDDLE.getLevel());
         }
-        return knowledgePortion;
+        student.getKnowledge(knowledgePortion);
     }
 
-    @Override
-    public void takeKnowledge(KnowledgeSource knowledgeSource) {
-        //todo
-    }
+
 
     public String getTopic() {
         return topic;

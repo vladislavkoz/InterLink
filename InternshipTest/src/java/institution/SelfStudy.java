@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class SelfStudy implements KnowledgeSource {
 
-    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.LOW.getLevel());
+    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(), SkillsLevels.LOW.getLevel());
     private Period period;
 
     public SelfStudy(Period period) {
@@ -16,12 +16,10 @@ public class SelfStudy implements KnowledgeSource {
 
 
     @Override
-    public void takeKnowledge(KnowledgeSource knowledgeSource) {
-        //todo
+    public void takeKnowledge(Student student) {
+        student.getKnowledge(knowledgePortion);
     }
 
-    @Override
-    public Knowledge getKnowledge(Student student) {
-        return knowledgePortion;
-    }
+
+
 }

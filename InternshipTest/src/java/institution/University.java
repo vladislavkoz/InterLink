@@ -19,17 +19,13 @@ public class University implements KnowledgeSource {
         this.period = period;
     }
 
-    @Override
-    public Knowledge  getKnowledge(Student student) {
-        if (universityStudents.contains(student)){
-            return knowledgePortion;
-        }
-        return null;
-    }
+
 
     @Override
-    public void takeKnowledge(KnowledgeSource knowledgeSource) {
-        //todo
+    public void takeKnowledge(Student student) {
+        if (universityStudents.contains(student)){
+            student.getKnowledge(this.knowledgePortion);
+        }
     }
 
 
