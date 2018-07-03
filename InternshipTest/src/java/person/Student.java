@@ -1,9 +1,11 @@
 package person;
 
+import Development.ScheduleRule;
 import institution.KnowledgeSource;
 import person.consciousness.Knowledge;
 
 public class Student implements KnowledgeSource {
+    private ScheduleRule studentSchedule;
     private String name;
     private Knowledge knowledge;
     private double trainingFactor;
@@ -20,6 +22,11 @@ public class Student implements KnowledgeSource {
         this.trainingFactor = trainingFactor;
         this.isLaptopeConsist = isLaptopeConsist;
         this.teachingFactor = teachingFactor;
+    }
+
+    @Override
+    public ScheduleRule getScheduleRule() {
+        return studentSchedule;
     }
 
     public String getName() {
@@ -54,26 +61,43 @@ public class Student implements KnowledgeSource {
         isLaptopeConsist = laptopeConsist;
     }
 
+    public ScheduleRule getStudentSchedule() {
+        return studentSchedule;
+    }
+
+    public void setStudentSchedule(ScheduleRule studentSchedule) {
+        this.studentSchedule = studentSchedule;
+    }
+
+    public double getTeachingFactor() {
+        return teachingFactor;
+    }
+
+    public void setTeachingFactor(double teachingFactor) {
+        this.teachingFactor = teachingFactor;
+    }
+
+
     @Override
     public void takeKnowledge(Student student) {
         Knowledge knowledgePortion = new Knowledge();
         knowledgePortion.setTheorySkills(this.knowledge.getTheorySkills() * teachingFactor);
         knowledgePortion.setPracticeSkills(this.knowledge.getPracticeSkills() * teachingFactor);
         student.getKnowledge(knowledgePortion);
-
     }
-
 
     public void getKnowledge(Knowledge newKnowledge) {
         this.knowledge.setPracticeSkills(this.knowledge.getPracticeSkills() + newKnowledge.getPracticeSkills() * trainingFactor);
         this.knowledge.setTheorySkills(this.knowledge.getTheorySkills() + newKnowledge.getTheorySkills() * trainingFactor);
+        System.out.println(this);
+        System.out.println();
     }
-
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "studentSchedule=" + studentSchedule +
+                ", name='" + name + '\'' +
                 ", knowledge=" + knowledge +
                 '}';
     }

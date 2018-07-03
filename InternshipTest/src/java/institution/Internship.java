@@ -1,6 +1,6 @@
 package institution;
 
-import institution.KnowledgeSource;
+import Development.ScheduleRule;
 import person.Student;
 import person.consciousness.Knowledge;
 
@@ -11,12 +11,18 @@ public class Internship implements KnowledgeSource {
     private String name;
     private List<Student> internshipStudents;
     private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
+    private ScheduleRule schedule;
 
-    public Internship(String name, List<Student> internshipStudents) {
+    public Internship(String name, List<Student> internshipStudents, ScheduleRule schedule) {
         this.name = name;
         this.internshipStudents = internshipStudents;
+        this.schedule = schedule;
     }
 
+    @Override
+    public ScheduleRule getScheduleRule() {
+        return schedule;
+    }
 
     @Override
     public void takeKnowledge(Student student) {
@@ -25,6 +31,23 @@ public class Internship implements KnowledgeSource {
         }
     }
 
+
+
+    public static Knowledge getKnowledgePortion() {
+        return knowledgePortion;
+    }
+
+    public static void setKnowledgePortion(Knowledge knowledgePortion) {
+        Internship.knowledgePortion = knowledgePortion;
+    }
+
+    public ScheduleRule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(ScheduleRule schedule) {
+        this.schedule = schedule;
+    }
 
     public String getName() {
         return name;
@@ -41,7 +64,6 @@ public class Internship implements KnowledgeSource {
     public void setInternshipStudents(List<Student> internshipStudents) {
         this.internshipStudents = internshipStudents;
     }
-
 
     public Internship(String name) {
         this.name = name;

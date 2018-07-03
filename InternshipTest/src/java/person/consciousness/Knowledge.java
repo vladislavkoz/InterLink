@@ -4,6 +4,7 @@ public class Knowledge {
 
     private double practiceSkills;
     private double theorySkills;
+    private double knowledgeLevel;
 
     public Knowledge(double practiceSkills, double theorySkills) {
         this.practiceSkills = practiceSkills;
@@ -27,6 +28,10 @@ public class Knowledge {
 
     public void setTheorySkills(double theorySkills) {
         this.theorySkills = theorySkills;
+    }
+
+    public double getKnowledgeLevel() {
+        return this.practiceSkills + this.theorySkills;
     }
 
     @Override

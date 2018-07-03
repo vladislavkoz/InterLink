@@ -7,13 +7,9 @@ import java.time.Period;
 
 public class DevelopmentEntity {
     private KnowledgeSource knowledgeSource;
-    private Period period;
-    private Schedule schedule;
 
-    public DevelopmentEntity(KnowledgeSource knowledgeSource, Period period, Schedule schedule) {
+    public DevelopmentEntity(KnowledgeSource knowledgeSource) {
         this.knowledgeSource = knowledgeSource;
-        this.period = period;
-        this.schedule = schedule;
     }
 
     public KnowledgeSource getKnowledgeSource() {
@@ -22,21 +18,5 @@ public class DevelopmentEntity {
 
     public void setKnowledgeSource(KnowledgeSource knowledgeSource) {
         this.knowledgeSource = knowledgeSource;
-    }
-
-    public Period getPeriod() {
-        return period;
-    }
-
-    public void setPeriod(Period period) {
-        this.period = period;
-    }
-
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
     }
 }

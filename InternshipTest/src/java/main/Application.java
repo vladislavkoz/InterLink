@@ -1,6 +1,14 @@
 package main;
 
+import Development.*;
+import institution.University;
+import person.Student;
+import person.consciousness.Knowledge;
+
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
@@ -13,24 +21,26 @@ public class Application {
 //        University exampleUniversity = new University("Example");
 //        exampleUniversity.setStudents(studentsRepository.getStudents("ExampleUniversity"));
 
+        Student student1 = new Student("John",new Knowledge(2,4),0.5,true,0.5);
+        ScheduleRule datedUniveristySchedule = new DatedSchedule(new Period(LocalDate.now(), LocalDate.now().plusWeeks(1)),DatedScheduleType.ONCE_A_WEEK, LocalDate.now().plusDays(2));
+        University chdtu = new University("CHDTU",datedUniveristySchedule);
+        List<DevelopmentEntity> developmentEntities = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        System.out.println(student1);
+        chdtu.setStudents(students);
+        DevelopmentEntity chdtuDevelopmentEntity = new DevelopmentEntity(chdtu);
+        developmentEntities.add(chdtuDevelopmentEntity);
+        DevelopmentPlan developmentPlan = new DevelopmentPlan(developmentEntities);
+        developmentPlan.executeDevelopmentPlan(student1,new Period(LocalDate.now(),LocalDate.now().plusWeeks(1)));
 
-//        University university = new University("CH.U.I.");
-//        university.addStudent(new Student("Andrew Kostenko", new Knowledge(2)));
-//        university.addStudent(new Student("Julia Veselkina", new Knowledge(7)));
-//        university.addStudent(new Student("Maria Perechrest", new Knowledge(6)));
-//
-//        System.out.println("Average Score:  " + university.getAverageScore());
-//
-//        Internship internship = new Internship("Interlink");
-//        System.out.println("List of internship's students:");
-//        System.out.println(internship.getStudents().isEmpty() ? "internship is Empty!" : internship.getStudents());
-//
-//        StudentsService studentsService = new StudentsService();
-//        studentsService.addStudentToInternship(university,
-//                new Student("Student1", new Knowledge(3)), internship);
-//        System.out.println(internship.getStudents().isEmpty() ? "internship is Empty!" : internship.getStudents());
-//
-//        studentsService.addStudentsFromUniversityToInternship(university, internship);
-//        System.out.println(internship.getStudents().isEmpty() ? "internship is Empty!" : internship.getStudents());
+        Student student2 = new Student("Jane",new Knowledge(1,2),0.1,true,0.2);
+        students.add(student2);
+        ScheduleRule simpleDatedSchedule = new SimpleSchedule(new Period(LocalDate.now(), LocalDate.now().plusWeeks(1)), SimpleScheduleType.ON_WEEKENDS);
+        chdtu.setSchedule(simpleDatedSchedule);
+        System.out.println("////////////");
+
+
+        developmentPlan.executeDevelopmentPlan(student2,new Period(LocalDate.now(),LocalDate.now().plusWeeks(1)));
     }
 }

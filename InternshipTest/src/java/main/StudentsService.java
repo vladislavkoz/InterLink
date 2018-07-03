@@ -6,17 +6,17 @@ import person.Student;
 
 public class StudentsService {
     public  void addStudentsFromUniversityToInternship(University university, Internship internship){
-        int averageScore = university.getAverageScore();
+        double averageScore = university.getAverageScore();
         for (Student student: university.getStudents()) {
-            if (student.getKnowledge().getLevel() > averageScore){
+            if (student.getKnowledge().getKnowledgeLevel() > averageScore){
                 internship.setStudent(student);
             }
         }
     }
 
     public void addStudentToInternship(University university, Student student, Internship internship) {
-        int averageScore = university.getAverageScore();
-        if (student.getKnowledge().getLevel() > averageScore) {
+        double averageScore = university.getAverageScore();
+        if (student.getKnowledge().getKnowledgeLevel() > averageScore) {
             internship.setStudent(student);
         }
     }

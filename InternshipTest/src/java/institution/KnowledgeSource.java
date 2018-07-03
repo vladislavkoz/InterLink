@@ -1,11 +1,10 @@
 package institution;
 
+import Development.ScheduleRule;
 import person.Student;
-import person.consciousness.Knowledge;
 
 public interface  KnowledgeSource {
 
+     ScheduleRule getScheduleRule();
      void takeKnowledge(Student student);
-
-
 }
