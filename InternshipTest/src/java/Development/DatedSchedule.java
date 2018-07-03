@@ -2,21 +2,11 @@ package Development;
 
 import java.time.LocalDate;
 
-public class DatedSchedule extends SimpleSchedule {
+public class DatedSchedule implements ScheduleRule {
 
     private Period period;
     private DatedScheduleType datedScheduleType;
     private LocalDate date;
-
-    @Override
-    public void add(ScheduleType standartScheduleType) {
-
-    }
-
-    @Override
-    public void remove(ScheduleType standartScheduleType) {
-
-    }
 
     public DatedSchedule(Period period, DatedScheduleType DatedScheduleType, LocalDate date) {
         this.period = period;
@@ -48,10 +38,7 @@ public class DatedSchedule extends SimpleSchedule {
         this.period = period;
     }
 
-    @Override
-    public LocalDate getDateOfSchedule() {
-        return this.date;
-    }
+
     @Override
     public boolean isIncludeCurrentDayInScheduleRule(LocalDate currentDay) {
         if (currentDay.isEqual(date)) {

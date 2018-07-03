@@ -5,6 +5,5 @@ import person.Student;
 
 public interface  KnowledgeSource {
 
-     ScheduleRule getScheduleRule();
-     void takeKnowledge(Student student);
+     void teach(Student student);
 }

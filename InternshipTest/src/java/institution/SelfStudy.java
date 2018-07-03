@@ -1,45 +1,18 @@
 package institution;
 
-import Development.ScheduleRule;
 import person.Student;
 import person.consciousness.Knowledge;
 
 public class SelfStudy implements KnowledgeSource {
 
-    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(), SkillsLevels.LOW.getLevel());
-    private ScheduleRule schedule;
+    private  Knowledge knowledgePortion;
 
-
-    public SelfStudy(ScheduleRule schedule) {
-        this.schedule = schedule;
-    }
-
-    public static Knowledge getKnowledgePortion() {
-        return knowledgePortion;
-    }
-
-    public static void setKnowledgePortion(Knowledge knowledgePortion) {
-        SelfStudy.knowledgePortion = knowledgePortion;
-    }
-
-    public ScheduleRule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(ScheduleRule schedule) {
-        this.schedule = schedule;
+    public SelfStudy(Knowledge knowledgePortion) {
+        this.knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(), SkillsLevels.LOW.getLevel());
     }
 
     @Override
-    public ScheduleRule getScheduleRule() {
-        return schedule;
+    public void teach(Student student) {
+        student.study(knowledgePortion);
     }
-
-    @Override
-    public void takeKnowledge(Student student) {
-        student.getKnowledge(knowledgePortion);
-    }
-
-
-
 }

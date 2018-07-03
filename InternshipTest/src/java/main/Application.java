@@ -1,6 +1,8 @@
 package main;
 
 import Development.*;
+import institution.InstitutionEntity;
+import institution.SkillsLevels;
 import institution.University;
 import person.Student;
 import person.consciousness.Knowledge;
@@ -22,25 +24,20 @@ public class Application {
 //        exampleUniversity.setStudents(studentsRepository.getStudents("ExampleUniversity"));
 
         Student student1 = new Student("John",new Knowledge(2,4),0.5,true,0.5);
-        ScheduleRule datedUniveristySchedule = new DatedSchedule(new Period(LocalDate.now(), LocalDate.now().plusWeeks(1)),DatedScheduleType.ONCE_A_WEEK, LocalDate.now().plusDays(2));
-        University chdtu = new University("CHDTU",datedUniveristySchedule);
+        ScheduleRule datedUniveristySchedule = new SimpleSchedule(new Period(LocalDate.now(), LocalDate.now().plusWeeks(1)),SimpleScheduleType.ON_WEEKDAYS);
+        InstitutionEntity chdtu = new University("CHDTU");
         List<DevelopmentEntity> developmentEntities = new ArrayList<>();
         List<Student> students = new ArrayList<>();
         students.add(student1);
         System.out.println(student1);
         chdtu.setStudents(students);
-        DevelopmentEntity chdtuDevelopmentEntity = new DevelopmentEntity(chdtu);
+        DevelopmentEntity chdtuDevelopmentEntity = new DevelopmentEntity(chdtu,datedUniveristySchedule);
         developmentEntities.add(chdtuDevelopmentEntity);
-        DevelopmentPlan developmentPlan = new DevelopmentPlan(developmentEntities);
+        DevelopmentPlan developmentPlan = new DevelopmentPlan(LocalDate.now(),developmentEntities);
         developmentPlan.executeDevelopmentPlan(student1,new Period(LocalDate.now(),LocalDate.now().plusWeeks(1)));
 
-        Student student2 = new Student("Jane",new Knowledge(1,2),0.1,true,0.2);
-        students.add(student2);
-        ScheduleRule simpleDatedSchedule = new SimpleSchedule(new Period(LocalDate.now(), LocalDate.now().plusWeeks(1)), SimpleScheduleType.ON_WEEKENDS);
-        chdtu.setSchedule(simpleDatedSchedule);
-        System.out.println("////////////");
+//        Student student2 = new Student("Jane",new Knowledge(1,2),0.1,true,0.2);
+//        students.add(student2);
 
-
-        developmentPlan.executeDevelopmentPlan(student2,new Period(LocalDate.now(),LocalDate.now().plusWeeks(1)));
     }
 }

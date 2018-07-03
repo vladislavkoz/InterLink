@@ -1,81 +1,25 @@
 package institution;
 
-import Development.ScheduleRule;
 import person.Student;
 import person.consciousness.Knowledge;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Internship implements KnowledgeSource {
+public class Internship extends InstitutionEntity {
+
     private String name;
     private List<Student> internshipStudents;
-    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
-    private ScheduleRule schedule;
+    private Knowledge knowledgePortion;
 
-    public Internship(String name, List<Student> internshipStudents, ScheduleRule schedule) {
-        this.name = name;
+    public Internship(String name, Knowledge knowledgePortion, List<Student> students, String name1, List<Student> internshipStudents) {
+        super(name, knowledgePortion, students);
+        this.name = name1;
         this.internshipStudents = internshipStudents;
-        this.schedule = schedule;
+        this.knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
     }
 
-    @Override
-    public ScheduleRule getScheduleRule() {
-        return schedule;
-    }
-
-    @Override
-    public void takeKnowledge(Student student) {
-        if (internshipStudents.contains(student)) {
-            student.getKnowledge(knowledgePortion);
-        }
-    }
-
-
-
-    public static Knowledge getKnowledgePortion() {
-        return knowledgePortion;
-    }
-
-    public static void setKnowledgePortion(Knowledge knowledgePortion) {
-        Internship.knowledgePortion = knowledgePortion;
-    }
-
-    public ScheduleRule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(ScheduleRule schedule) {
-        this.schedule = schedule;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Student> getInternshipStudents() {
-        return internshipStudents;
-    }
-
-    public void setInternshipStudents(List<Student> internshipStudents) {
-        this.internshipStudents = internshipStudents;
-    }
-
-    public Internship(String name) {
-        this.name = name;
-        this.internshipStudents = new ArrayList<Student>();
-    }
-
-    public void setStudent(Student student) {
-        internshipStudents.add(student);
-    }
-
-    public List<Student> getStudents() {
-        return internshipStudents;
+    public void teach(Student student, Knowledge knowledgePortion){
+        super.teach(student,knowledgePortion);
     }
 }
 

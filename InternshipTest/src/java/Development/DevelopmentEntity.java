@@ -2,14 +2,14 @@ package Development;
 
 import institution.KnowledgeSource;
 
-
-import java.time.Period;
-
 public class DevelopmentEntity {
-    private KnowledgeSource knowledgeSource;
 
-    public DevelopmentEntity(KnowledgeSource knowledgeSource) {
+    private KnowledgeSource knowledgeSource;
+    private ScheduleRule scheduleRule;
+
+    public DevelopmentEntity(KnowledgeSource knowledgeSource, ScheduleRule scheduleRule) {
         this.knowledgeSource = knowledgeSource;
+        this.scheduleRule = scheduleRule;
     }
 
     public KnowledgeSource getKnowledgeSource() {
@@ -18,5 +18,13 @@ public class DevelopmentEntity {
 
     public void setKnowledgeSource(KnowledgeSource knowledgeSource) {
         this.knowledgeSource = knowledgeSource;
+    }
+
+    public ScheduleRule getScheduleRule() {
+        return scheduleRule;
+    }
+
+    public void setScheduleRule(ScheduleRule scheduleRule) {
+        this.scheduleRule = scheduleRule;
     }
 }

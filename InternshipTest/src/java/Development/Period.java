@@ -3,6 +3,7 @@ package Development;
 import java.time.LocalDate;
 
 public class Period {
+
     private LocalDate startDay;
     private LocalDate lastDay;
 

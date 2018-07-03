@@ -1,7 +1,6 @@
 package Development;
 
-
-import java.time.Instant;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,29 +20,23 @@ public class DateUtils {
         return false;
     }
 
-    public static int getDayOfWick(LocalDate currentDay){
-        Date date =  java.sql.Date.valueOf(currentDay);
-        int numberOfDay;
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        numberOfDay = c.get(Calendar.DAY_OF_WEEK);
-        return numberOfDay;
+    public static DayOfWeek getDayOfWick(LocalDate currentDay){
+        return currentDay.getDayOfWeek();
     }
 
     public static boolean isThisWeekendsDay(LocalDate currentDay){
-        int numberOfWeekDay = getDayOfWick(currentDay);
-        if (numberOfWeekDay == 1) {
+        DayOfWeek day = getDayOfWick(currentDay);
+        if (day == DayOfWeek.SATURDAY){
             return true;
         }
-        if (numberOfWeekDay == 7) {
-            return true;
+        if (day == DayOfWeek.SUNDAY){
+            return  true;
         }
         return false;
     }
 
     public static boolean isThisWeeksDay(LocalDate currentDay){
-        int numberOfWeekDay = getDayOfWick(currentDay);
-        if (numberOfWeekDay >= 2 && numberOfWeekDay <=6){
+        if (!isThisWeekendsDay(currentDay)){
             return true;
         }
         return false;

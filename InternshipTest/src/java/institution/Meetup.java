@@ -1,19 +1,18 @@
 package institution;
 
-import Development.ScheduleRule;
 import person.Student;
 import person.consciousness.Knowledge;
 
 public class Meetup implements KnowledgeSource {
+
     private String topic;
     private boolean isInteractiveConsists;
-    private static Knowledge knowledgePortion = new Knowledge(SkillsLevels.MIDDLE.getLevel(),0);
-    private ScheduleRule schedule;
+    private  Knowledge knowledgePortion ;
 
-    public Meetup(String topic, boolean isInteractiveConsists, ScheduleRule schedule) {
+    public Meetup(String topic, boolean isInteractiveConsists, Knowledge knowledgePortion) {
         this.topic = topic;
         this.isInteractiveConsists = isInteractiveConsists;
-        this.schedule = schedule;
+        this.knowledgePortion = new Knowledge(SkillsLevels.MIDDLE.getLevel(),0);
     }
 
     public boolean isInteractiveConsists() {
@@ -24,39 +23,24 @@ public class Meetup implements KnowledgeSource {
         isInteractiveConsists = interactiveConsists;
     }
 
-    public static Knowledge getKnowledgePortion() {
+    public Knowledge getKnowledgePortion() {
         return knowledgePortion;
     }
 
-    public static void setKnowledgePortion(Knowledge knowledgePortion) {
-        Meetup.knowledgePortion = knowledgePortion;
-    }
-
-    public ScheduleRule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(ScheduleRule schedule) {
-        this.schedule = schedule;
+    public void setKnowledgePortion(Knowledge knowledgePortion) {
+        this.knowledgePortion = knowledgePortion;
     }
 
     @Override
-    public ScheduleRule getScheduleRule() {
-        return schedule;
-    }
-
-    @Override
-    public void takeKnowledge(Student student) {
+    public void teach(Student student) {
         if (isInteractiveConsists){
             knowledgePortion.setTheorySkills(SkillsLevels.HIGHT.getLevel());
         }
         if (student.isLaptopeConsist()) {
             knowledgePortion.setPracticeSkills(SkillsLevels.MIDDLE.getLevel());
         }
-        student.getKnowledge(knowledgePortion);
+        student.study(knowledgePortion);
     }
-
-
 
     public String getTopic() {
         return topic;
