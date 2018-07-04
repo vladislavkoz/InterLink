@@ -4,12 +4,14 @@ import person.Student;
 import person.consciousness.Knowledge;
 
 import java.util.List;
+import java.util.Optional;
 
-public class InstitutionEntity implements KnowledgeSource{
+public class InstitutionEntity implements KnowledgeSource {
 
     private String name;
-    private  Knowledge knowledgePortion;
+    private Knowledge knowledgePortion;
     private List<Student> students;
+
     public InstitutionEntity() {
     }
 
@@ -39,16 +41,17 @@ public class InstitutionEntity implements KnowledgeSource{
         students.add(student);
     }
 
-    public void addStudents(List<Student> students){
+    public void addStudents(List<Student> students) {
         students.addAll(students);
     }
 
     @Override
     public void teach(Student student) {
+        student.study(this.knowledgePortion);
     }
 
-    public void teach(Student student, Knowledge knowledgePortion){ ;
-        if(this.students.contains(student)){
+    public void teach(Student student, Knowledge knowledgePortion) {
+        if (this.students.contains(student)) {
             student.study(knowledgePortion);
         }
     }

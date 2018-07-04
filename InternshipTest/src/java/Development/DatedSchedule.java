@@ -14,7 +14,8 @@ public class DatedSchedule implements ScheduleRule {
         this.date = date;
     }
 
-    public ScheduleType getDatedScheduleType() {
+    @Override
+    public ScheduleType getScheduleType() {
         return datedScheduleType;
     }
 
@@ -26,6 +27,7 @@ public class DatedSchedule implements ScheduleRule {
         return date;
     }
 
+    @Override
     public void setDate(LocalDate date) {
         this.date = date;
     }
@@ -38,23 +40,8 @@ public class DatedSchedule implements ScheduleRule {
         this.period = period;
     }
 
-
     @Override
-    public boolean isIncludeCurrentDayInScheduleRule(LocalDate currentDay) {
-        if (currentDay.isEqual(date)) {
-            setNextDateOfSchedule();
-            return true;
-        }
-        return false;
-    }
-
-    private void setNextDateOfSchedule(){
-        switch (this.datedScheduleType){
-            case ONCE_A_WEEK: this.date = this.date.plusWeeks(1);
-            break;
-            case ONCE_A_MONTH: this.date = this.date.plusMonths(1);
-            break;
-            case ONCE_A_YEAR: this.date = this.date.plusYears(1);
-        }
+    public boolean isIncludeDay(LocalDate currentDay) {
+        return this.datedScheduleType.isIncludeDate(currentDay, this.date);
     }
 }

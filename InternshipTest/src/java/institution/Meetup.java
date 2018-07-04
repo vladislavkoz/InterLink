@@ -7,12 +7,12 @@ public class Meetup implements KnowledgeSource {
 
     private String topic;
     private boolean isInteractiveConsists;
-    private  Knowledge knowledgePortion ;
+    private Knowledge knowledgePortion;
 
     public Meetup(String topic, boolean isInteractiveConsists, Knowledge knowledgePortion) {
         this.topic = topic;
         this.isInteractiveConsists = isInteractiveConsists;
-        this.knowledgePortion = new Knowledge(SkillsLevels.MIDDLE.getLevel(),0);
+        this.knowledgePortion = new Knowledge(SkillsLevels.MIDDLE.getLevel(), 0);
     }
 
     public boolean isInteractiveConsists() {
@@ -33,7 +33,7 @@ public class Meetup implements KnowledgeSource {
 
     @Override
     public void teach(Student student) {
-        if (isInteractiveConsists){
+        if (isInteractiveConsists) {
             knowledgePortion.setTheorySkills(SkillsLevels.HIGHT.getLevel());
         }
         if (student.isLaptopeConsist()) {

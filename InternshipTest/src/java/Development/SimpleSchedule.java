@@ -21,22 +21,21 @@ public class SimpleSchedule implements ScheduleRule {
     }
 
     @Override
-    public boolean isIncludeCurrentDayInScheduleRule(LocalDate currentDay) {
-        boolean result = false;
-        switch (this.simpleScheduleType) {
-            case ON_WEEKENDS: if (DateUtils.isThisWeekendsDay(currentDay)) {
-                result = true;
-            }
-                break;
-            case ON_WEEKDAYS: if (DateUtils.isThisWeeksDay(currentDay)){
-                result = true;
-            };
-            break;
-            case DAILY: result = true;
-            break;
-            default:
-                result = false;
-            }
-            return result;
-        }
+    public ScheduleType getScheduleType() {
+        return simpleScheduleType;
+    }
+
+    @Override
+    public LocalDate getDate() {
+        return LocalDate.now();
+    }
+
+    @Override
+    public void setDate(LocalDate date) {
+    }
+
+    @Override
+    public boolean isIncludeDay(LocalDate currentDay) {
+        return this.simpleScheduleType.isIncludeDay(currentDay);
+    }
 }

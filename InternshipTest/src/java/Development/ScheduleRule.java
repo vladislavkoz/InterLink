@@ -4,6 +4,13 @@ import java.time.LocalDate;
 
 public interface ScheduleRule {
 
-     Period getPeriod();
-     boolean isIncludeCurrentDayInScheduleRule(LocalDate currentDay);
+    Period getPeriod();
+
+    ScheduleType getScheduleType();
+
+    LocalDate getDate();
+
+    void setDate(LocalDate date);
+
+    boolean isIncludeDay(LocalDate currentDay);
 }

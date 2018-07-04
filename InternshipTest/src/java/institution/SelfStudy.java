@@ -5,7 +5,7 @@ import person.consciousness.Knowledge;
 
 public class SelfStudy implements KnowledgeSource {
 
-    private  Knowledge knowledgePortion;
+    private Knowledge knowledgePortion;
 
     public SelfStudy(Knowledge knowledgePortion) {
         this.knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(), SkillsLevels.LOW.getLevel());

@@ -12,14 +12,13 @@ public class Internship extends InstitutionEntity {
     private Knowledge knowledgePortion;
 
     public Internship(String name, Knowledge knowledgePortion, List<Student> students, String name1, List<Student> internshipStudents) {
-        super(name, knowledgePortion, students);
         this.name = name1;
         this.internshipStudents = internshipStudents;
-        this.knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(),SkillsLevels.HIGHT.getLevel());
+        this.knowledgePortion = new Knowledge(SkillsLevels.LOW.getLevel(), SkillsLevels.HIGHT.getLevel());
     }
 
-    public void teach(Student student, Knowledge knowledgePortion){
-        super.teach(student,knowledgePortion);
+    public void teach(Student student, Knowledge knowledgePortion) {
+        super.teach(student, knowledgePortion);
     }
 }
 

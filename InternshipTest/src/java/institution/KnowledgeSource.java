@@ -3,7 +3,8 @@ package institution;
 import Development.ScheduleRule;
 import person.Student;
 
-public interface  KnowledgeSource {
+public interface KnowledgeSource {
 
-     void teach(Student student);
+    void teach(Student student);
+
 }

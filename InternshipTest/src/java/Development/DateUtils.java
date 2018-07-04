@@ -7,11 +7,11 @@ import java.util.Date;
 
 public class DateUtils {
 
-    public static boolean isIncludeCurrnetDayInPeriod(LocalDate currentDay,Period period){
+    public static boolean isIncludeCurrnetDayInPeriod(LocalDate currentDay, Period period) {
         if (period.getStartDay().isEqual(currentDay)) {
             return true;
         }
-        if (currentDay.isAfter(period.getStartDay()) && currentDay.isBefore(period.getLastDay())){
+        if (currentDay.isAfter(period.getStartDay()) && currentDay.isBefore(period.getLastDay())) {
             return true;
         }
         if (period.getLastDay().isEqual(currentDay)) {
@@ -20,23 +20,23 @@ public class DateUtils {
         return false;
     }
 
-    public static DayOfWeek getDayOfWick(LocalDate currentDay){
+    public static DayOfWeek getDayOfWick(LocalDate currentDay) {
         return currentDay.getDayOfWeek();
     }
 
-    public static boolean isThisWeekendsDay(LocalDate currentDay){
+    public static boolean isThisWeekendsDay(LocalDate currentDay) {
         DayOfWeek day = getDayOfWick(currentDay);
-        if (day == DayOfWeek.SATURDAY){
+        if (day == DayOfWeek.SATURDAY) {
             return true;
         }
-        if (day == DayOfWeek.SUNDAY){
-            return  true;
+        if (day == DayOfWeek.SUNDAY) {
+            return true;
         }
         return false;
     }
 
-    public static boolean isThisWeeksDay(LocalDate currentDay){
-        if (!isThisWeekendsDay(currentDay)){
+    public static boolean isThisWeeksDay(LocalDate currentDay) {
+        if (!isThisWeekendsDay(currentDay)) {
             return true;
         }
         return false;
