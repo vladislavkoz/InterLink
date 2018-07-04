@@ -9,4 +9,5 @@ public interface ScheduleType {
     boolean isIncludeDate(LocalDate currentDate, LocalDate eventDay);
 
     LocalDate getNextDate(LocalDate date);
+
 }
