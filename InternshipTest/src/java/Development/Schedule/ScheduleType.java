@@ -1,4 +1,4 @@
-package Development;
+package Development.Schedule;
 
 import java.time.LocalDate;
 

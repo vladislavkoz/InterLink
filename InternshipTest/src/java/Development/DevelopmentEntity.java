@@ -1,5 +1,6 @@
 package Development;
 
+import Development.Schedule.ScheduleRule;
 import institution.KnowledgeSource;
 
 public class DevelopmentEntity {

@@ -33,6 +33,7 @@ public class Meetup implements KnowledgeSource {
 
     @Override
     public void teach(Student student) {
+        Knowledge knowledgePortion = this.knowledgePortion;
         if (isInteractiveConsists) {
             knowledgePortion.setTheorySkills(SkillsLevels.HIGHT.getLevel());
         }

@@ -1,8 +1,10 @@
 package main;
 
 import Development.*;
+import Development.Schedule.DatedSchedule;
+import Development.Schedule.DatedScheduleType;
+import Development.Schedule.ScheduleRule;
 import institution.InstitutionEntity;
-import institution.SkillsLevels;
 import institution.University;
 import person.Student;
 import person.consciousness.Knowledge;

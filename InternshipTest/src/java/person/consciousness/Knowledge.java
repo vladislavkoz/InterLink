@@ -1,5 +1,6 @@
 package person.consciousness;
 
+
 public class Knowledge {
 
     private double practiceSkills;
@@ -41,4 +42,34 @@ public class Knowledge {
                 ", theorySkills=" + theorySkills +
                 '}';
     }
+
+
+//    public static Builder getBuilder(){
+//         return  new Knowledge().new Builder();
+//    }
+//
+//    private  class Builder{
+//
+//
+//        private Builder() {
+//
+//        }
+//
+//        public Knowledge buildKnowledge(){
+//                return Knowledge.this;
+//        }
+//
+//        public Builder buildTheory(double level){
+//            Knowledge.this.theorySkills = level;
+//            return this;
+//        }
+//
+//        public Builder buildPratice(double level){
+//            Knowledge.this.practiceSkills = level;
+//            return this;
+//        }
+//
+//        public Knowledge buildTheory() {
+//        }
+//    }
 }
